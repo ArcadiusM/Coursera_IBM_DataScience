@@ -1,0 +1,26 @@
+language: python
+
+python:
+  - 3.6
+
+bundler_args: --retry 3
+
+
+install:
+  - sudo apt-get update
+  - chmod +x ./utils/travis_miniconda.sh
+  - ./utils/travis_miniconda.sh
+  - PATH="$HOME/miniconda/bin:$PATH"
+  - conda env create -f environment.yml
+  - source activate test_TravisCI
+
+script:
+  - travis_wait python utils/travis_runner.py
+  
+ deploy:
+    provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+    keep_history: true
+    on:
+        branch: master
