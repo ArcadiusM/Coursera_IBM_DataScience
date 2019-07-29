@@ -12,7 +12,6 @@ install:
   - ./utils/travis_miniconda.sh
   - PATH="$HOME/miniconda/bin:$PATH"
   - conda env create -f environment.yml
-  - source activate test_TravisCI
 
 script:
   - travis_wait python utils/travis_runner.py
