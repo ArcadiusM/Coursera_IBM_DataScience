@@ -5,6 +5,7 @@ python:
 
 bundler_args: --retry 3
 
+
 install:
   - sudo apt-get update
   - chmod +x ./utils/travis_miniconda.sh
